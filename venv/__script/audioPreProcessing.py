@@ -28,7 +28,7 @@ class AudioPreProcesser:
         self.__raw_audio_path = inputAsPath(raw_audio_path)
         self.__wav_audio_record = []
         buildDirectoryAnyway(self.__raw_audio_path)
-        wavfile_path_list = glob.glob(self.__wav_audio_path+"*")
+        wavfile_path_list = sorted(glob.glob(self.__wav_audio_path+"*"))
     
         for wavfile_record in wavfile_path_list:  # get filename and the filename extention and store them separately
             filename_set = wavfile_record.split("/")[-1].split(".")
@@ -82,18 +82,19 @@ def buildDirectory(folder_path="../rawfolder/"):
         return False
 
 
-def buildDirectoryAnyway(folder_path="../rawfolder/"): 
+def buildDirectoryAnyway(folder_path):
     """
     Build A New Folder.
-    If The Path Exists, Overwrite ALL In The Old Directory . 
+    If The Path Exists, Overwrite ALL In The Old Directory .
     """
     try:
         os.mkdir(folder_path)
         return True
     except FileExistsError as fe:
-        [os.remove(wav) for wav in glob.glob(folder_path+"/*")]
+        shutil.rmtree(folder_path)
+        os.mkdir(folder_path)
         # print("Though "+folder_path+" Already Existed. Overwrite it anyway")
-        return True    
+        return True
 
 
 def extractAudioFeature(wavfile):
@@ -183,13 +184,13 @@ def inputAsPath(path_str):
 
 
 #==============================================================================
-#sample:  
+#sample:
 # def main():
 #     a = AudioPreProcesser(wav_audio_path="../data/", raw_audio_path="../rawA")
 #     a.wavToRaw()
-#           
-#     
-# 
+#
+#
+#
 # if __name__ == "__main__":
 #     main()
 #==============================================================================

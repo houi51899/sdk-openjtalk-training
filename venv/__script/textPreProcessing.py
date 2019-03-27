@@ -54,7 +54,7 @@ class textPreProcessor:
         
         """    
         text_file = []       
-        text_path_list = glob.glob(self.__splited_text_path+"*")   
+        text_path_list = sorted(glob.glob(self.__splited_text_path+"*"))
         for text_path in text_path_list:  # obtain filename and the filename extention and save them respectely 
             file_name = text_path.split("/")[-1].split(".")
             text_file.append(file_name)      
@@ -104,8 +104,6 @@ class textPreProcessor:
                 line=f.readline()
             f.close()
             number=number+1
-
-       
                 
     def __fullLabelMaker(self):
         """
@@ -155,7 +153,7 @@ def buildDirectory(folder_path="../label/"):
         print(folder_path+" Already Existed.")
         return False
     
-def buildDirectoryAnyway(folder_path="../label/"): 
+def buildDirectoryAnyway(folder_path):
     """
     Build A New Folder.
     If The Path Exists, Overwrite ALL In The Old Directory . 
