@@ -5,11 +5,12 @@ Created on Mon Mar 18 12:55:36 2019
 
 @author: zaizen
 """
-import textPreProcessing as tpp
-import audioPreProcessing as app
-import sys
 import getopt
 import os
+import sys
+
+import audioPreProcessing as app
+import textPreProcessing as tpp
 
 
 def main(argv):
@@ -18,13 +19,13 @@ def main(argv):
     label_path = "../label/"
     wav_audio_path = "../__audiodata/"
     raw_audio_path = "../raw/"
-    
+
     try:
         options, args = getopt.getopt(argv, "hn:t:w:r:l:", ["help", "name=", "text=", "wav=", "raw=", "label="])
     except getopt.GetoptError:
         print("Parameter Error! \n Program closed.", file=sys.stderr)
         sys.exit()
-        
+
     for option, value in options:
         if option in ("-h", "--help"):
             print("This is a program to handle the processing of text and audio data \n"
@@ -32,9 +33,9 @@ def main(argv):
                   "====================================================================\n"
                   "Usage \n"
                   "Following command is recommanded \n"
-                  "'python3 sample.py -n nobu -t ../__text.txt -r ../raw/ -w ../__audiodata/ -l ../label/' \n"
-                  "or simply 'python3 sample.py' \n"
-                  "Good luck! \n"             
+                  "'python3 example.py -n nobu -t ../__text.txt -r ../raw/ -w ../__audiodata/ -l ../label/' \n"
+                  "or simply 'python3 example.py' \n"
+                  "Good luck! \n"
                   , file=sys.stderr)
             sys.exit()
         if option in ("-n", "--name"):
@@ -51,7 +52,7 @@ def main(argv):
             raw_audio_path = tpp.inputAsPath(value)
         if option in ("-l", "--label"):
             label_path = tpp.inputAsPath(value)
-        
+
     print("Current setting \n" +
           "Name: "+db_name+"\n" +
           "Text file path: "+os.path.abspath(origin_text_file)+"\n" +
@@ -59,7 +60,7 @@ def main(argv):
           "Audio data(raw) path: "+os.path.abspath(raw_audio_path)+"\n" +
           "Label file path: "+os.path.abspath(label_path)+"\n"
           , file=sys.stderr)
-   
+
     """
     For text preprocessing:
         1.set a name for the output files. The output files will be named as [Input Name][number(0~)].lab
@@ -68,7 +69,7 @@ def main(argv):
     """
     text = tpp.textPreProcessor(db_name, origin_text_file, label_path)
     text.labelProduce()
-    
+
     """
     For audio preprocessing:
         1.set a name for the output files. The output files will be named as [Input Name][number(0~)].raw

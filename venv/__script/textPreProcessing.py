@@ -18,8 +18,6 @@ import os
 import glob
 import shutil
 import sys
-import codecs
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
 
 class textPreProcessor:
     """
@@ -58,7 +56,7 @@ class textPreProcessor:
         """    
         text_file = []       
         text_path_list = sorted(glob.glob(self.__splited_text_path+"*"))
-        for text_path in text_path_list:  # obtain filename and the filename extention and save them respectely 
+        for text_path in text_path_list:  # obtain filename and the filename extention and save them respectively
             file_name = text_path.split("/")[-1].split(".")
             text_file.append(file_name)      
         for file in text_file:           
@@ -68,7 +66,7 @@ class textPreProcessor:
             htsvoice = ' -m '+' /usr/local/default.htsvoice '
             outwav = ' -ow ' +'1.wav '
             txtfilename = self.__splited_text_path+file[0]+'.txt '               
-            cmd=open_jtalk+log+mech+htsvoice+outwav+txtfilename
+            cmd = open_jtalk+log+mech+htsvoice+outwav+txtfilename
             os.system(cmd)
 
     def __monoLabelMaker(self):
@@ -76,7 +74,7 @@ class textPreProcessor:
         extract monolabels from log
         """       
         labelfile=".lab"
-        copyflag=False
+        copyflag = False
         number=1
         while os.path.exists(self.__log_path+self.__db_name+str(number)): 
             copyflag=False

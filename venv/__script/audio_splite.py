@@ -21,7 +21,7 @@ class AudioFileCutter:
         self.__audio_info__ = []
         self.__min_silence__ = None
         self.__audio_block_list__ = sorted(glob.glob(self.__presplite_path__ + "*"))
-        buildDirectoryAnyway(splited_audio_path)
+        buildDirectoryAnyway(self.__splited_audio_path__)
         self.audioInfoDetect()
 
     def setMinSil(self, silence_len):

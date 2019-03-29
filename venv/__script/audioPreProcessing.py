@@ -186,7 +186,7 @@ def inputAsPath(path_str):
 
 
 #==============================================================================
-#sample:
+#
 # def main():
 #     a = AudioPreProcesser(wav_audio_path="../data/", raw_audio_path="../rawA")
 #     a.wavToRaw()
