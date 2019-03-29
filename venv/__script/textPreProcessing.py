@@ -17,6 +17,9 @@ Abstract of textprocessing
 import os
 import glob
 import shutil
+import sys
+import codecs
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
 
 class textPreProcessor:
     """
@@ -41,9 +44,9 @@ class textPreProcessor:
         one line in one textfile
         """   
         line = 0
-        f = open(self.__origin_text_file,"r")
+        f = open(self.__origin_text_file, "r", encoding='utf-8')
         for sentence in f:
-            output_txt = open(self.__splited_text_path+self.__db_name+str(line+1)+".txt","w")
+            output_txt = open(self.__splited_text_path+self.__db_name+str(line+1)+".txt", "w", encoding='utf-8')
             output_txt.write(sentence)
             output_txt.close()
             line = line+1            
@@ -62,7 +65,7 @@ class textPreProcessor:
             open_jtalk = 'open_jtalk '
             log = ' -ot '+self.__log_path+file[0]
             mech = ' -x '+' /usr/local/dic '
-            htsvoice = ' -m '+' /usr/local/share/hts_voice/nitech_jp_atr503_m001.htsvoice '
+            htsvoice = ' -m '+' /usr/local/default.htsvoice '
             outwav = ' -ow ' +'1.wav '
             txtfilename = self.__splited_text_path+file[0]+'.txt '               
             cmd=open_jtalk+log+mech+htsvoice+outwav+txtfilename
@@ -77,7 +80,7 @@ class textPreProcessor:
         number=1
         while os.path.exists(self.__log_path+self.__db_name+str(number)): 
             copyflag=False
-            f=open(self.__log_path+self.__db_name+str(number))
+            f=open(self.__log_path+self.__db_name+str(number), encoding='utf-8')
             line=f.readline()
             while line: 
                 mark="Output label"
@@ -87,7 +90,7 @@ class textPreProcessor:
                 elif len(space_check)==0:
                     copyflag=False
                 elif copyflag==True:    
-                        lab_write=open(self.__monolabel_path+self.__db_name+str(number)+labelfile,"a")
+                        lab_write=open(self.__monolabel_path+self.__db_name+str(number)+labelfile,"a", encoding='utf-8')
                         linecut=line.split("+")
                         line1=linecut[0]
                         linecut1=line1.split("-")
@@ -115,7 +118,7 @@ class textPreProcessor:
         
         while os.path.exists(self.__log_path+self.__db_name+str(number)): 
             copyflag=False
-            f=open(self.__log_path+self.__db_name+str(number))
+            f=open(self.__log_path+self.__db_name+str(number), encoding='utf-8')
             line=f.readline()
             while line:       
                 startmark="Output label"        #開始判定マーク
@@ -127,7 +130,7 @@ class textPreProcessor:
                     #print("b")
                     copyflag=False
                 elif copyflag==True:
-                        lab_write=open(self.__fulllable_path+self.__db_name+str(number)+labelfile,"a")     #
+                        lab_write=open(self.__fulllable_path+self.__db_name+str(number)+labelfile,"a", encoding='utf-8')     #
                         lab_write.writelines(line)
                         lab_write.close()
                 line=f.readline()
@@ -172,7 +175,7 @@ def inputAsPath(path_str):
     if path[-1] is not '/':
         path.extend('/')
     path_str = ''.join(path)
-    return path_str 
+    return path_str
 
 #==============================================================================
 #sample: 

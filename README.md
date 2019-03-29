@@ -1,10 +1,19 @@
 # data-preprocessing-for-openjtalk
-Handle the data preprocessing.
+Handle a data preprocessing.
 Make data ready for acoustic model training.  
 
 ## Getting Started
-Waiting for further information.
+Two main parts
 
+### audio splite:audio_splite.py
+  spite a big wavfile into pieces by silence in audio
+
+### audio/textPreProcessing:sample.py
+  convert wavfile to proper rawfile and extract labels from sentenses in script
+  
+  Attention : Make sure rawfile and labels are in pair with same name.  
+  (though they might in different directory) 
+  eg. a1.raw in ../raw/ | a1.lab(mono) in ../labels/mono/ | a1.lab(full) in ../labels/full/
 
 ### Prerequisites
 
@@ -14,7 +23,7 @@ HTK
 SPTK
 HDecode
 htsvoice file
-SOX (maybe...)
+SOX 
 audio file(.wav 96KHz 24bit mono )
 text file(.txt)
 pydub
@@ -34,17 +43,17 @@ Following command is recommanded
 python3 sample.py -n nobu -t ../__text.txt -r ../raw/ -w ../__audiodata/ -l ../label/
 ```
 Or simply 
+
 ```
 python3 sample.py
 ```
 
 
-## Deployment
+## Environment 
 
-CentOS
-python3.6
+linux
+python3
 
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 

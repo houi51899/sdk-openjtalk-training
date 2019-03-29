@@ -17,8 +17,10 @@ Abstract of audioprocessing
 
 import os
 import glob
-# from pydub import AudioSegment    #pydub always make 24bit wavfile to 32bit wavfile !
+# pydub is fine but it always convert 24bit wavfile to 32bit wavfile ! Sometime this feature could be useful
 import wave
+import shutil
+import sys
 
 
 class AudioPreProcesser:
@@ -36,14 +38,14 @@ class AudioPreProcesser:
 
     def wavToRaw(self):
         
-        # print(self.__wav_audio_record)
+        # print(self.__wav_audio_record, file=sys.stderr)
         unsupport_counter = 0
         audio_path_temp = "../temp/"
         buildDirectoryAnyway(audio_path_temp)
         counter = 0
         for file in self.__wav_audio_record:
             if audioFormatCheck(wavfile=self.__wav_audio_path + file[0] + "." + file[1]) is False:
-                print("File "+file[0] + "." + file[1]+" is not supported")
+                print("File "+file[0] + "." + file[1]+" is not supported", file=sys.stderr)
                 unsupport_counter = unsupport_counter+1
                 continue
             
@@ -51,22 +53,22 @@ class AudioPreProcesser:
 
             wavToRaw(audio_path_temp + file[0] + "f.wav", audio_path_temp + file[0] + "r.raw")
            
-            # print(raw_folder + file[0] + "." + file[1], raw_folder + file[0] + "r.raw")
+            # print(raw_folder + file[0] + "." + file[1], raw_folder + file[0] + "r.raw", file=sys.stderr)
             downFrequncy(audio_path_temp + file[0] + "r.raw", audio_path_temp + file[0] + "rds.raw")
-            # print(raw_folder + file[0] + "r.raw", raw_folder + file[0] + "rds.raw")
+            # print(raw_folder + file[0] + "r.raw", raw_folder + file[0] + "rds.raw", file=sys.stderr)
             rawToWav(audio_path_temp + file[0] + "rds.raw", audio_path_temp + file[0] + "rdsw.wav")
-            # print(raw_folder + file[0] + "rds.raw", raw_folder + file[0] + "rdsw.wav")
+            # print(raw_folder + file[0] + "rds.raw", raw_folder + file[0] + "rdsw.wav", file=sys.stderr)
             downSampleWidth(audio_path_temp + file[0] + "rdsw.wav", audio_path_temp + file[0] + "rdswb.wav")
            
             wavToRaw(audio_path_temp + file[0] + "rdswb.wav", self.__raw_audio_path + self.__db_name + str(counter) + ".raw")
             counter = counter + 1
     
-        if unsupport_counter >= 1:
-            print("Ignored some unsupported audio")
-            return False
+        if unsupport_counter > 0:
+            print("Ignored some unsupported audio", file=sys.stderr)
+            # return False
         else:
-            print("All wavfile processed")
-            return True
+            print("All wavfile processed", file=sys.stderr)
+            # return True
 
 
 def buildDirectory(folder_path="../rawfolder/"):
@@ -78,7 +80,7 @@ def buildDirectory(folder_path="../rawfolder/"):
         os.mkdir(folder_path)
         return True
     except FileExistsError as fe:
-        # print(folder_path+" Already Existed.")
+        # print(folder_path+" Already Existed.", file=sys.stderr)
         return False
 
 
@@ -93,7 +95,7 @@ def buildDirectoryAnyway(folder_path):
     except FileExistsError as fe:
         shutil.rmtree(folder_path)
         os.mkdir(folder_path)
-        # print("Though "+folder_path+" Already Existed. Overwrite it anyway")
+        # print("Though "+folder_path+" Already Existed. Overwrite it anyway", file=sys.stderr)
         return True
 
 
@@ -111,14 +113,14 @@ def audioFormatCheck(wavfile, standard_channels=1, standard_frame_rate=96000, st
     True : standard form
     false : non-standard form    
     """    
-    channel,frame_rate,sample_width = extractAudioFeature(wavfile)
-    # print(channel,frame_rate,sample_width)
+    channel, frame_rate, sample_width = extractAudioFeature(wavfile)
+    # print(channel,frame_rate,sample_width, file=sys.stderr)
     
     if channel == standard_channels and frame_rate == standard_frame_rate and sample_width == standard_sample_width:
-        # print(wavfile+" . It's sample width is "+str(sample_width))
+        # print(wavfile+" . It's sample width is "+str(sample_width), file=sys.stderr)
         return True
     else:
-        print(wavfile+" is not a standard wavfile. It's sample width is "+str(sample_width))
+        print(wavfile+" is not a standard wavfile. It's sample width is "+str(sample_width), file=sys.stderr)
         return False
 
 
