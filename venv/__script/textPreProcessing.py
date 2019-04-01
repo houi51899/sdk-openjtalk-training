@@ -33,7 +33,7 @@ class textPreProcessor:
         self.__fulllable_path = self.__label_path+"full/"
         buildDirectoryAnyway(self.__splited_text_path)
         buildDirectoryAnyway(self.__log_path)
-        buildDirectoryAnyway(self.__label_path)
+        buildDirectory(self.__label_path)
         buildDirectoryAnyway(self.__monolabel_path)
         buildDirectoryAnyway(self.__fulllable_path)
         
@@ -142,7 +142,7 @@ class textPreProcessor:
         self.__fullLabelMaker()
         
         
-def buildDirectory(folder_path="../label/"):
+def buildDirectory(folder_path):
     """
     Build A New Folder.
     If The Path Exists, The Build Fail . 
