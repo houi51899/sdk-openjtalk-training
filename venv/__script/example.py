@@ -21,10 +21,10 @@ def main(argv):
     raw_audio_path = "../raw/"
 
     try:
-        options, args = getopt.getopt(argv, "hn:t:w:r:l:", ["help", "name=", "text=", "wav=", "raw=", "label="])
+        options, args = getopt.getopt(argv, "n:t:w:r:l:h", ["name=", "text=", "wav=", "raw=", "label=", "help"])
     except getopt.GetoptError:
         print("Parameter Error! \n Program closed.", file=sys.stderr)
-        sys.exit()
+        sys.exit(1)
 
     for option, value in options:
         if option in ("-h", "--help"):
@@ -37,21 +37,21 @@ def main(argv):
                   "or simply 'python3 example.py' \n"
                   "Good luck! \n"
                   , file=sys.stderr)
-            sys.exit()
+            sys.exit(0)
         if option in ("-n", "--name"):
             db_name = value
         if option in ("-t", "--text"):
-            if os.path.exists(value) is not True:
-                print("Text file is not found in the input directory!", file=sys.stderr)
-                sys.exit()
-            else:
+            if os.path.exists(value) is True:
                 origin_text_file = value
+            else:
+                print("Text file is not found in the input directory!", file=sys.stderr)
+                sys.exit(1)
         if option in ("-w", "--wav"):
-            wav_audio_path = tpp.inputAsPath(value)
+            wav_audio_path = inputAsPath(value)
         if option in ("-r", "--raw"):
-            raw_audio_path = tpp.inputAsPath(value)
+            raw_audio_path = inputAsPath(value)
         if option in ("-l", "--label"):
-            label_path = tpp.inputAsPath(value)
+            label_path = inputAsPath(value)
 
     print("Current setting \n" +
           "Name: "+db_name+"\n" +
@@ -80,5 +80,15 @@ def main(argv):
     audio.wavToRaw()
 
 
+def inputAsPath(path_str):
+    path = list(path_str)
+    if path[-1] is not '/':
+        path.extend('/')
+    path_str = ''.join(path)
+    return path_str
+
+
 if __name__ == "__main__":
     main(sys.argv[1:])
+
+

@@ -45,7 +45,7 @@ class AudioFileCutter:
                 if record[0] is False:
                     continue
                 else:
-                    file_order = audioSplite(record[1], self.__splited_audio_path__, self.__min_silence__, file_order)
+                    file_order = spliteAndOrder(record[1], self.__splited_audio_path__, self.__min_silence__, file_order)
 
 
 def typeCheck(file_path):
@@ -75,16 +75,15 @@ def typeCheck(file_path):
         return type_info
 
 
-def audioSplite(audio_block, splited_audio_path, min_silence, audio_order):
+def spliteAndOrder(audio_block, splited_audio_path, min_silence, audio_order):
     name = audio_block.split("/")[-1].split(".")[0]
     print(name, file=sys.stderr)
     sound = AudioSegment.from_file(audio_block, format="wav")
     chunks = split_on_silence(sound, min_silence_len=min_silence, silence_thresh=-60, keep_silence=600)
     for k, chunk in enumerate(chunks):
         chunk.export(
-            splited_audio_path + name + "_" + str(audio_order) + ".wav",
+            splited_audio_path + name + "_" + str("{0:04d}".format(audio_order)) + ".wav",
             format="wav")
-        print(splited_audio_path + name + "_" + str(audio_order) + ".wav", file=sys.stderr)
         audio_order = audio_order + 1
     return audio_order
 

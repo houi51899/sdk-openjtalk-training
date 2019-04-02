@@ -30,7 +30,7 @@ class AudioPreProcesser:
         self.__raw_audio_path = inputAsPath(raw_audio_path)
         self.__wav_audio_record = []
         buildDirectoryAnyway(self.__raw_audio_path)
-        wavfile_path_list = sorted(glob.glob(self.__wav_audio_path+"*"))
+        wavfile_path_list = sorted(glob.glob(self.__wav_audio_path+"*"))  # avoid disorder of pairing of audio and label
     
         for wavfile_record in wavfile_path_list:  # get filename and the filename extention and store them separately
             filename_set = wavfile_record.split("/")[-1].split(".")
@@ -42,10 +42,10 @@ class AudioPreProcesser:
         unsupport_counter = 0
         audio_path_temp = "../temp/"
         buildDirectoryAnyway(audio_path_temp)
-        counter = 0
+        counter = 1
         for file in self.__wav_audio_record:
-            if audioFormatCheck(wavfile=self.__wav_audio_path + file[0] + "." + file[1]) is False:
-                print("File "+file[0] + "." + file[1]+" is not supported", file=sys.stderr)
+            if audioFormatCheck(wavfile=(self.__wav_audio_path + file[0] + "." + file[1])) is False:
+                os.system("echo " + " File "+file[0] + "." + file[1]+" is not supported")
                 unsupport_counter = unsupport_counter+1
                 continue
             
@@ -60,7 +60,7 @@ class AudioPreProcesser:
             # print(raw_folder + file[0] + "rds.raw", raw_folder + file[0] + "rdsw.wav", file=sys.stderr)
             downSampleWidth(audio_path_temp + file[0] + "rdsw.wav", audio_path_temp + file[0] + "rdswb.wav")
            
-            wavToRaw(audio_path_temp + file[0] + "rdswb.wav", self.__raw_audio_path + self.__db_name + str(counter) + ".raw")
+            wavToRaw(audio_path_temp + file[0] + "rdswb.wav", self.__raw_audio_path + self.__db_name + str("{0:04d}".format(counter)) + ".raw")
             counter = counter + 1
     
         if unsupport_counter > 0:

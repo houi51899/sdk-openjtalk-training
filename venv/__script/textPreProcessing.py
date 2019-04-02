@@ -24,13 +24,11 @@ class textPreProcessor:
     """
 
     """
-
-    def __init__(self, db_name="normal_daily", origin_text_file="../text.txt", label_path="../label/",
-                 splited_text_path="../splited_text/", log_path="../log/"):
+    def __init__(self, db_name="normal_daily", origin_text_file="../text.txt", label_path="../label/"):
+        self.__splited_text_path = "../splited_text/"
+        self.__log_path = "../log/"
         self.__db_name = db_name
         self.__origin_text_file = origin_text_file
-        self.__splited_text_path = inputAsPath(splited_text_path)
-        self.__log_path = inputAsPath(log_path)
         self.__label_path = inputAsPath(label_path)
         self.__monolabel_path = self.__label_path + "mono/"
         self.__fulllable_path = self.__label_path + "full/"
@@ -44,10 +42,10 @@ class textPreProcessor:
         """
         one line in one textfile
         """
-        line = 0
+        line = 1
         f = open(self.__origin_text_file, "r", encoding='utf-8')
         for sentence in f:
-            output_txt = open(self.__splited_text_path + self.__db_name + str(line + 1) + ".txt", "w", encoding='utf-8')
+            output_txt = open(self.__splited_text_path + self.__db_name + str("{0:04d}".format(line)) + ".txt", "w", encoding='utf-8')
             output_txt.write(sentence)
             output_txt.close()
             line = line + 1
@@ -76,12 +74,18 @@ class textPreProcessor:
         """
         extract monolabels from log
         """
-        labelfile = ".lab"
-        copyflag = False
-        number = 1
-        while os.path.exists(self.__log_path + self.__db_name + str(number)):
+        label_mark = ".lab"
+        filename_list = []
+
+        log_file_list = sorted(glob.glob(self.__log_path + "*"))
+        for log_path in log_file_list:  # obtain filename and the filename extention and save them respectively
+            file_name = log_path.split("/")[-1]
+            filename_list.append(file_name)
+        # log file without any filename extension
+
+        for filename in filename_list:
             copyflag = False
-            f = open(self.__log_path + self.__db_name + str(number), encoding='utf-8')
+            f = open(self.__log_path + filename, encoding='utf-8')
             line = f.readline()
             while line:
                 mark = "Output label"
@@ -89,9 +93,11 @@ class textPreProcessor:
                 if mark in line:
                     copyflag = True
                 elif len(space_check) == 0:
+                    if copyflag is True:
+                        break
                     copyflag = False
-                elif copyflag == True:
-                    lab_write = open(self.__monolabel_path + self.__db_name + str(number) + labelfile, "a",
+                elif copyflag is True:
+                    lab_write = open(self.__monolabel_path + filename + label_mark, "a",
                                      encoding='utf-8')
                     linecut = line.split("+")
                     line1 = linecut[0]
@@ -108,18 +114,24 @@ class textPreProcessor:
                     lab_write.close()
                 line = f.readline()
             f.close()
-            number = number + 1
 
     def __fullLabelMaker(self):
         """
         extract fulllabels from log
         """
-        labelfile = ".lab"
-        number = 1
 
-        while os.path.exists(self.__log_path + self.__db_name + str(number)):
+        label_mark = ".lab"
+        filename_list = []
+
+        log_file_list = sorted(glob.glob(self.__log_path + "*"))
+        for log_path in log_file_list:  # obtain filename and the filename extention and save them respectively
+            file_name = log_path.split("/")[-1]
+            filename_list.append(file_name)
+        # log file without any filename extension
+
+        for filename in filename_list:
             copyflag = False
-            f = open(self.__log_path + self.__db_name + str(number), encoding='utf-8')
+            f = open(self.__log_path + filename, encoding='utf-8')
             line = f.readline()
             while line:
                 startmark = "Output label"  # 開始判定マーク
@@ -129,15 +141,16 @@ class textPreProcessor:
                     copyflag = True
                 elif len(space_mark) == 0:
                     # print("b")
+                    if copyflag is True:
+                        break
                     copyflag = False
                 elif copyflag == True:
-                    lab_write = open(self.__fulllable_path + self.__db_name + str(number) + labelfile, "a",
-                                     encoding='utf-8')  #
+                    lab_write = open(self.__fulllable_path + filename + label_mark, "a",
+                                     encoding='utf-8')
                     lab_write.writelines(line)
                     lab_write.close()
                 line = f.readline()
             f.close()
-            number = number + 1
 
     def labelProduce(self):
         self.__spliteScript()
@@ -181,16 +194,11 @@ def inputAsPath(path_str):
     path_str = ''.join(path)
     return path_str
 
-# ==============================================================================
-# sample:
-# 
-# def main():          
-#     
-#     a=textPreProcessor(db_name="nobu",origin_text_file="../text.txt",label_path="../label")
-#     a.labelProduce()
-#     
-# if __name__=="__main__":
-#      main()
-# 
-# 
-# ==============================================================================
+
+def main():
+
+    a=textPreProcessor(db_name="nobu", origin_text_file="../__text.txt", label_path="../labels/")
+    a.labelProduce()
+
+if __name__=="__main__":
+     main()
