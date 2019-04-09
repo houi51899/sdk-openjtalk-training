@@ -15,18 +15,18 @@ import sys
 
 
 class AudioFileCutter:
-    def __init__(self, presplite_path, splited_audio_path):
-        self.__presplite_path__ = presplite_path
+    def __init__(self, presplit_path, splited_audio_path):
+        self.__presplit_path__ = presplit_path
         self.__splited_audio_path__ = splited_audio_path
         self.__audio_info__ = []
         self.__min_silence__ = None
-        self.__audio_block_list__ = sorted(glob.glob(self.__presplite_path__ + "*"))
+        self.__audio_block_list__ = sorted(glob.glob(self.__presplit_path__ + "*"))
         buildDirectoryAnyway(self.__splited_audio_path__)
         self.audioInfoDetect()
 
     def setMinSil(self, silence_len):
         if silence_len < 200 or silence_len > 5000:
-            print(silence_len + "ms is not a proper length of a silence to splite audio", file=sys.stderr)
+            print(silence_len + "ms is not a proper length of a silence to split audio", file=sys.stderr)
         else:
             self.__min_silence__ = silence_len
 
@@ -36,16 +36,16 @@ class AudioFileCutter:
             self.__audio_info__.append(typeCheck(audio_block))
         print(self.__audio_info__, file=sys.stderr)
 
-    def audioSplite(self):     # format of __audio_info__ : [valid_flag,file_path,file_type]
+    def audioSplit(self):     # format of __audio_info__ : [valid_flag,file_path,file_type]
         file_order = 1
         if self.__min_silence__ is None:
-            print("please set silence length used to splite audio! ", file=sys.stderr)
+            print("please set silence length used to split audio! ", file=sys.stderr)
         else:
             for record in self.__audio_info__:
                 if record[0] is False:
                     continue
                 else:
-                    file_order = spliteAndOrder(record[1], self.__splited_audio_path__, self.__min_silence__, file_order)
+                    file_order = splitAndOrder(record[1], self.__splited_audio_path__, self.__min_silence__, file_order)
 
 
 def typeCheck(file_path):
@@ -75,7 +75,7 @@ def typeCheck(file_path):
         return type_info
 
 
-def spliteAndOrder(audio_block, splited_audio_path, min_silence, audio_order):
+def splitAndOrder(audio_block, splited_audio_path, min_silence, audio_order):
     name = audio_block.split("/")[-1].split(".")[0]
     print(name, file=sys.stderr)
     sound = AudioSegment.from_file(audio_block, format="wav")
@@ -102,9 +102,9 @@ def buildDirectoryAnyway(folder_path):
 
 
 if __name__ == "__main__":
-    presplite_path = "../__prepAudiodata/"
+    presplit_path = "../__prepAudiodata/"
     splited_audio_path = "../__audiodata/"
-    a = AudioFileCutter(presplite_path, splited_audio_path)
+    a = AudioFileCutter(presplit_path, splited_audio_path)
     a.setMinSil(2000)
-    a.audioSplite()
+    a.audioSplit()
 

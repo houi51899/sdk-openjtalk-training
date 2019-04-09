@@ -3,8 +3,8 @@
 """
 Created on Fri Mar 15 16:17:05 2019
 
-Abstract of textprocessing
-1. splite lines from origin text file and store them in individual text file.
+Abstract of textPreProcessing
+1. split lines from origin text file and store them in individual text file.
 2. generate log for each line.
 3. extract labels
  3-1 for each log file, copy "Output label" part as full label and paste it into new ".lab" file. 
@@ -78,7 +78,7 @@ class textPreProcessor:
         filename_list = []
 
         log_file_list = sorted(glob.glob(self.__log_path + "*"))
-        for log_path in log_file_list:  # obtain filename and the filename extention and save them respectively
+        for log_path in log_file_list:  # obtain filename and the filename extension and save them respectively
             file_name = log_path.split("/")[-1]
             filename_list.append(file_name)
         # log file without any filename extension
@@ -124,7 +124,7 @@ class textPreProcessor:
         filename_list = []
 
         log_file_list = sorted(glob.glob(self.__log_path + "*"))
-        for log_path in log_file_list:  # obtain filename and the filename extention and save them respectively
+        for log_path in log_file_list:  # obtain filename and the filename extension and save them respectively
             file_name = log_path.split("/")[-1]
             filename_list.append(file_name)
         # log file without any filename extension
@@ -144,7 +144,7 @@ class textPreProcessor:
                     if copyflag is True:
                         break
                     copyflag = False
-                elif copyflag == True:
+                elif copyflag is True:
                     lab_write = open(self.__fulllable_path + filename + label_mark, "a",
                                      encoding='utf-8')
                     lab_write.writelines(line)
@@ -197,8 +197,10 @@ def inputAsPath(path_str):
 
 def main():
 
-    a=textPreProcessor(db_name="nobu", origin_text_file="../__text.txt", label_path="../labels/")
+    a = textPreProcessor(db_name="nobu", origin_text_file="../__text.txt", label_path="../labels/")
     a.labelProduce()
 
-if __name__=="__main__":
-     main()
+
+if __name__ == "__main__":
+
+    main()
