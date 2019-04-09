@@ -31,10 +31,8 @@ class AudioFileCutter:
             self.__min_silence__ = silence_len
 
     def audioInfoDetect(self):
-
         for audio_block in self.__audio_block_list__:
             self.__audio_info__.append(typeCheck(audio_block))
-        print(self.__audio_info__, file=sys.stderr)
 
     def audioSplit(self):     # format of __audio_info__ : [valid_flag,file_path,file_type]
         file_order = 1

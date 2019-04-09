@@ -4,7 +4,7 @@
 Created on Mon Mar 18 15:33:50 2019
 Goal: Convert wavfile into standard form (raw file) as openjtalk-model-training data.
 Attention: Current version only support wavfiles with 96kHz 32bit(interger) mono channel
-Abstract of audio processing
+Abstract of audio processing (take 32bit integer 96kHz wavfile as an example)
 1. convert 32bit integer to32bit float
 2. down sample-rate(frequency) 96kHz to 48kHz
 3. down sample-width(bit) 32bit to 16bit
@@ -27,8 +27,7 @@ class AudioPreProcesser:
         self.__raw_audio_path = inputAsPath(raw_audio_path)
         self.__wav_audio_record = []
         buildDirectoryAnyway(self.__raw_audio_path)
-        wavfile_path_list = sorted(
-            glob.glob(self.__wav_audio_path + "*.wav"))  # avoid disorder of pairing of audio and label
+        wavfile_path_list = sorted(glob.glob(self.__wav_audio_path + "*.wav"))
 
         for wavfile_record in wavfile_path_list:  # get filename and the filename extension and store them as a set
             temp_channel, temp_frame_rate, temp_sample_width = extractAudioFeature(wavfile_record)

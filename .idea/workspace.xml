@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/__script/audio_splite.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/audio_splite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__script/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__script/textPreProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/textPreProcessing.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +13,78 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="audio-text-preprocessing-for-openjtalk" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/__script/audio_splite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="45" column="46" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="46" />
+              <folding>
+                <element signature="e#108#138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/__script/audioPreProcessing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="222" column="1" lean-forward="true" selection-start-line="222" selection-start-column="1" selection-end-line="222" selection-end-column="1" />
+              <folding>
+                <element signature="e#461#470#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/__script/example.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="790">
+              <caret line="79" column="29" lean-forward="true" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+              <folding>
+                <element signature="e#108#121#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/__script/htsvoice_output.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+              <folding>
+                <element signature="e#24#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LICENSE">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="195">
+                <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/__script/textPreProcessing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="90" column="37" lean-forward="true" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -35,13 +100,29 @@
     <findStrings>
       <find>buildDirectoryAnyway</find>
       <find>os</find>
-      <find>glob</find>
       <find>open(</find>
       <find>read</find>
       <find>write</find>
       <find>print</find>
       <find># Extracting features</find>
       <find>sample</find>
+      <find>&quot;_</find>
+      <find>spliteAndOrder</find>
+      <find>glob</find>
+      <find>filename_list</find>
+      <find>downFrequncy</find>
+      <find>splitAndOrder</find>
+      <find>audioSplit</find>
+      <find>frequ</find>
+      <find>downSampleWidth</find>
+      <find>downFrequency</find>
+      <find>wavIntToFloat</find>
+      <find>unsupport_counter</find>
+      <find>__splitScript</find>
+      <find>extractAudioFeature</find>
+      <find>audioFormatCheck</find>
+      <find>main</find>
+      <find>splite</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -50,21 +131,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/venv/__script/htsvoice_output.py" />
-        <option value="$PROJECT_DIR$/venv/__script/audio_splite.py" />
-        <option value="$PROJECT_DIR$/venv/__script/textPreProcessing.py" />
         <option value="$PROJECT_DIR$/venv/__script/sample.py" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" />
+        <option value="$PROJECT_DIR$/venv/__script/htsvoice_output.py" />
+        <option value="$USER_HOME$/Desktop/wavesample/pydubsplit.py" />
+        <option value="$PROJECT_DIR$/venv/__script/textPreProcessing.py" />
         <option value="$PROJECT_DIR$/venv/__script/example.py" />
+        <option value="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" />
+        <option value="$PROJECT_DIR$/venv/__script/audio_splite.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="396" />
-    <option name="y" value="69" />
-    <option name="width" value="868" />
-    <option name="height" value="639" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="265" />
+    <option name="width" value="860" />
+    <option name="height" value="636" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -74,7 +156,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -97,6 +178,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -120,7 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sample">
+  <component name="RunManager" selected="Python.audioPreProcessing">
     <configuration name="audioPreProcessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="audio-text-preprocessing-for-openjtalk" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,6 +245,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="htsvoice_output" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="audio-text-preprocessing-for-openjtalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/__script" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/__script/htsvoice_output.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sample" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="audio-text-preprocessing-for-openjtalk" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -184,10 +287,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="textPreProcessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="audio-text-preprocessing-for-openjtalk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/__script" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/__script/textPreProcessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.sample" />
         <item itemvalue="Python.audioPreProcessing" />
+        <item itemvalue="Python.textPreProcessing" />
+        <item itemvalue="Python.sample" />
+        <item itemvalue="Python.htsvoice_output" />
       </list>
     </recent_temporary>
   </component>
@@ -204,24 +330,33 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="396" y="69" width="868" height="639" extended-state="0" />
+    <frame x="-1" y="24" width="1370" height="721" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15621302" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49906892" visible="true" weight="0.24053451" />
+      <window_info id="Structure" order="1" sideWeight="0.5009311" side_tool="true" weight="0.24053451" />
+      <window_info id="Favorites" order="2" sideWeight="0.5009311" side_tool="true" weight="0.24053451" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.327787" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.057803467" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3294509" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294509" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2046589" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3294509" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -236,55 +371,79 @@
     <entry file="file://$PROJECT_DIR$/venv/pip-selfcheck.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/__text.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/pyvenv.cfg">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
-          <folding>
-            <element signature="e#108#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/venv/log/nobu0010" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0001.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/log/nobu0007" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0002.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0016.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0014.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0010.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0008.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0003.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0002.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0014.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0003.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0009.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0012.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0004.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0004.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0008.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0001.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/full/nobu0005.lab" />
+    <entry file="file://$PROJECT_DIR$/venv/labels/mono/nobu0005.lab" />
+    <entry file="file://$USER_HOME$/Desktop/wavesample/pydubsplit.py" />
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/audio_splite.py">
+    <entry file="file://$PROJECT_DIR$/venv/__script/textPreProcessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="51" column="113" selection-start-line="51" selection-start-column="107" selection-end-line="51" selection-end-column="113" />
-          <folding>
-            <element signature="e#108#138#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="90" column="37" lean-forward="true" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/__script/htsvoice_output.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        <state relative-caret-position="75">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/textPreProcessing.py">
+    <entry file="file://$PROJECT_DIR$/venv/__script/example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2440">
-          <caret line="173" column="23" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
+        <state relative-caret-position="790">
+          <caret line="79" column="29" lean-forward="true" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
           <folding>
-            <element signature="e#632#641#0" expanded="true" />
+            <element signature="e#108#121#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/__script/audioPreProcessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="60" column="22" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="22" />
+        <state relative-caret-position="295">
+          <caret line="222" column="1" lean-forward="true" selection-start-line="222" selection-start-column="1" selection-end-line="222" selection-end-column="1" />
           <folding>
-            <element signature="e#462#471#0" expanded="true" />
+            <element signature="e#461#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/__script/audio_splite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="45" column="46" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="46" />
+          <folding>
+            <element signature="e#108#138#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -292,18 +451,12 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="137">
-            <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <first_editor relative-caret-position="195">
+            <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__text.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

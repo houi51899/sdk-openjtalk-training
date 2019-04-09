@@ -2,11 +2,24 @@
 Handle a data preprocessing.
 Make data ready for acoustic model training.  
 
+supported format of input audio wave 
+###block wavfile supported(split script supports more): 
+(48kHz)16bit signed integer, 24bit signed integer, 32bit signed integer, 32bit float
+(96kHz)24bit signed integer, 32bit signed integer, 32bit float
+###splited audio supported(raw generating script supports less):
+(48kHz) 16bit signed integer, 32bit signed integer
+(96kHz) 32bit signed integer
+
+tips: Here you can split your splited wavfile once more (but in a long silence parameter) 
+      to convert it to a supported format
+
 ## Getting Started
 Two main parts
 
-### audio splite:audio_splite.py
-  spite a big wavfile into pieces by silence in audio
+### audio split:audio_split.py
+  split a block wavfile into pieces by silence in audio
+  When set a long duration of silence to split audio file, this script could used to convert a unsupported wavfile 
+  to a supported one, which means you can split some split-already wavfiles again to convert its format. 
 
 ### audio/textPreProcessing:example.py
   convert wavfile to proper rawfile and extract labels from sentenses in script
