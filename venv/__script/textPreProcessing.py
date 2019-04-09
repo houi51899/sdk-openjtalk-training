@@ -38,7 +38,7 @@ class textPreProcessor:
         buildDirectoryAnyway(self.__monolabel_path)
         buildDirectoryAnyway(self.__fulllable_path)
 
-    def __spliteScript(self):
+    def __splitScript(self):
         """
         one line in one textfile
         """
@@ -153,7 +153,7 @@ class textPreProcessor:
             f.close()
 
     def labelProduce(self):
-        self.__spliteScript()
+        self.__splitScript()
         self.__logGeneration()
         self.__monoLabelMaker()
         self.__fullLabelMaker()
