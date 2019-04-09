@@ -77,7 +77,7 @@ def main(argv):
         3.Change the directory as output directory for rawfiles.
     """
     audio = app.AudioPreProcesser(db_name, wav_audio_path, raw_audio_path)
-    audio.wavToRaw()
+    audio.wavfileProcessing()
 
 
 def inputAsPath(path_str):

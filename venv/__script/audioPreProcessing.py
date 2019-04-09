@@ -2,16 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar 18 15:33:50 2019
-
 Goal: Convert wavfile into standard form (raw file) as openjtalk-model-training data.
 Attention: Current version only support wavfiles with 96kHz 32bit(interger) mono channel
-
 Abstract of audio processing
 1. convert 32bit integer to32bit float
 2. down sample-rate(frequency) 96kHz to 48kHz
 3. down sample-width(bit) 32bit to 16bit
 4.obtain raw file
-
 @author: peng_zaizen
 """
 
@@ -30,8 +27,9 @@ class AudioPreProcesser:
         self.__raw_audio_path = inputAsPath(raw_audio_path)
         self.__wav_audio_record = []
         buildDirectoryAnyway(self.__raw_audio_path)
-        wavfile_path_list = sorted(glob.glob(self.__wav_audio_path+"*"))  # avoid disorder of pairing of audio and label
-    
+        wavfile_path_list = sorted(
+            glob.glob(self.__wav_audio_path + "*.wav"))  # avoid disorder of pairing of audio and label
+
         for wavfile_record in wavfile_path_list:  # get filename and the filename extension and store them as a set
             temp_channel, temp_frame_rate, temp_sample_width = extractAudioFeature(wavfile_record)
             filename_set = wavfile_record.split("/")[-1].split(".")
@@ -41,10 +39,11 @@ class AudioPreProcesser:
             self.__wav_audio_record.append(filename_set)
 
     def printFileList(self):
-        print(self.__wav_audio_record, file=sys.stderr)
+        for i in self.__wav_audio_record:
+            print(i, file=sys.stderr)
 
     def wavToRaw(self):
-        
+
         # print(self.__wav_audio_record, file=sys.stderr)
         unsupport_counter = 0
         audio_path_temp = "../temp/"
@@ -52,42 +51,56 @@ class AudioPreProcesser:
         counter = 1
         for file in self.__wav_audio_record:
             if audioFormatCheck(wavfile=(self.__wav_audio_path + file[0] + "." + file[1])) is False:
-                os.system("echo " + " File "+file[0] + "." + file[1]+" is not supported")
-                unsupport_counter = unsupport_counter+1
+                os.system("echo " + "File " + file[0] + "." + file[1] + " is not supported")
+                unsupport_counter = unsupport_counter + 1
                 continue
-            
-            wavIntToFloat(self.__wav_audio_path + file[0] + "." + file[1], audio_path_temp + file[0] + "f.wav")
 
+            if file[4] == 16:
+                if file[3] == 48000:
+                    wavToRaw(self.__wav_audio_path + file[0] + "." + file[1],
+                             self.__raw_audio_path + self.__db_name + str("{0:04d}".format(counter)) + ".raw")
+                else:
+                    unsupport_counter = unsupport_counter + 1
+                    continue
+            elif file[4] == 32:
+                wavIntToFloat(self.__wav_audio_path + file[0] + "." + file[1], audio_path_temp + file[0] + "f.wav")
+                if file[3] == 96000:
+                    wavToRaw(audio_path_temp + file[0] + "f.wav", audio_path_temp + file[0] + "r.raw")
+                    # print(raw_folder + file[0] + "." + file[1], raw_folder + file[0] + "r.raw", file=sys.stderr)
 
-            ## how about for the 48kHz audio???
-            if file[3] == 96000:
-                wavToRaw(audio_path_temp + file[0] + "f.wav", audio_path_temp + file[0] + "r.raw")
-                # print(raw_folder + file[0] + "." + file[1], raw_folder + file[0] + "r.raw", file=sys.stderr)
+                    downFrequency(audio_path_temp + file[0] + "r.raw", audio_path_temp + file[0] + "rds.raw")
+                    # print(raw_folder + file[0] + "r.raw", raw_folder + file[0] + "rds.raw", file=sys.stderr)
+                    rawToWav(audio_path_temp + file[0] + "rds.raw", audio_path_temp + file[0] + "rdsw.wav")
+                    # print(raw_folder + file[0] + "rds.raw", raw_folder + file[0] + "rdsw.wav", file=sys.stderr)
+                    downSampleWidth(audio_path_temp + file[0] + "rdsw.wav", audio_path_temp + file[0] + "rdswb.wav")
+                    wavToRaw(audio_path_temp + file[0] + "rdswb.wav",
+                             self.__raw_audio_path + self.__db_name + str("{0:04d}".format(counter)) + ".raw")
+                elif file[3] == 48000:
+                    downSampleWidth(audio_path_temp + file[0] + "f.wav", audio_path_temp + file[0] + "rdswb.wav")
+                    wavToRaw(audio_path_temp + file[0] + "rdswb.wav",
+                             self.__raw_audio_path + self.__db_name + str("{0:04d}".format(counter)) + ".raw")
+                else:
+                    unsupport_counter = unsupport_counter + 1
+                    continue
+            else:
+                unsupport_counter = unsupport_counter + 1
+                continue
 
-                downFrequency(audio_path_temp + file[0] + "r.raw", audio_path_temp + file[0] + "rds.raw")
-                # print(raw_folder + file[0] + "r.raw", raw_folder + file[0] + "rds.raw", file=sys.stderr)
-                rawToWav(audio_path_temp + file[0] + "rds.raw", audio_path_temp + file[0] + "rdsw.wav")
-                # print(raw_folder + file[0] + "rds.raw", raw_folder + file[0] + "rdsw.wav", file=sys.stderr)
-                downSampleWidth(audio_path_temp + file[0] + "rdsw.wav", audio_path_temp + file[0] + "rdswb.wav")
-            elif file[3] == 48000:
-                downSampleWidth(audio_path_temp + file[0] + "f.wav", audio_path_temp + file[0] + "rdswb.wav")
-           
-            wavToRaw(audio_path_temp + file[0] + "rdswb.wav", self.__raw_audio_path + self.__db_name + str("{0:04d}".format(counter)) + ".raw")
             counter = counter + 1
-    
+
         if unsupport_counter > 0:
             print("Ignored some unsupported audio", file=sys.stderr)
-            # return False
+
         else:
             print("All wavfile processed", file=sys.stderr)
-            # return True
+
 
 
 def buildDirectory(folder_path="../rawfolder/"):
     """
     Build A New Folder.
-    If The Path Exists, The Build Fail . 
-    """    
+    If The Path Exists, The Build Fail .
+    """
     try:
         os.mkdir(folder_path)
         return True
@@ -115,36 +128,37 @@ def extractAudioFeature(wavfile):
     audio_file = wave.open(wavfile, 'r')
     channel = audio_file.getnchannels()
     frame_rate = audio_file.getframerate()
-    sample_width = audio_file.getsampwidth()*8
+    sample_width = audio_file.getsampwidth() * 8
     return channel, frame_rate, sample_width
 
 
-def audioFormatCheck(wavfile, standard_channels=1, standard_sample_width=32):
+def audioFormatCheck(wavfile):
     """
     Check The Wavfile As Input Data
     True : standard form
-    false : non-standard form    
-    """    
+    false : non-standard form
+    """
     channel, frame_rate, sample_width = extractAudioFeature(wavfile)
     # print(channel,frame_rate,sample_width, file=sys.stderr)
-    standard_frame_rate1 = 96000
-    standard_frame_rate2 = 48000
 
-    if channel == standard_channels and frame_rate == standard_frame_rate1 and sample_width == standard_sample_width:
-        # print(wavfile+" . It's sample width is "+str(sample_width), file=sys.stderr)
-        return True
-    elif channel == standard_channels and frame_rate == standard_frame_rate2 and sample_width == standard_sample_width:
-        return True
-    else:
-        print(wavfile+" is not a standard wavfile. It's sample width is "+str(sample_width), file=sys.stderr)
+    if channel != 1:
         return False
+    else:
+        if frame_rate == 48000 and sample_width == 32:
+            return True
+        elif frame_rate == 48000 and sample_width == 16:
+            return True
+        elif frame_rate == 96000 and sample_width == 32:
+            return True
+        else:
+            return False
 
 
 def wavIntToFloat(int_wavfile, float_wavfile):
     """
-    for 32bit wavfile, convert integer form to float form  
+    for 32bit wavfile, convert integer form to float form
     """
-    cmd = "sox "+int_wavfile+" -e floating-point "+float_wavfile
+    cmd = "sox " + int_wavfile + " -e floating-point " + float_wavfile
     os.system(cmd)
 
 
@@ -152,7 +166,7 @@ def wavToRaw(wavfile, rawfile):
     """
     wipe the header
     """
-    cmd = "sox "+wavfile+" "+rawfile
+    cmd = "sox " + wavfile + " " + rawfile
     if os.path.exists(wavfile):
         os.system(cmd)
         os.remove(wavfile)
@@ -161,10 +175,10 @@ def wavToRaw(wavfile, rawfile):
 def downFrequency(high_frequency_file, low_frequency_file):
     """
     downsampling from 96000 to 48000 so it's 2:1 ->21
-    
+
     """
     ## check faudio frequency ?
-    cmd = " ds -s 21 "+high_frequency_file+" > "+low_frequency_file
+    cmd = " ds -s 21 " + high_frequency_file + " > " + low_frequency_file
     if os.path.exists(high_frequency_file):
         os.system(cmd)
         os.remove(high_frequency_file)
@@ -174,19 +188,19 @@ def rawToWav(rawfile, wavfile):
     """
     form raw to wav(frequency_rate=48000.bit=32 float)
     """
-    cmd = "sox -r 48000 -b 32 -e float "+rawfile+" "+wavfile
+    cmd = "sox -r 48000 -b 32 -e float " + rawfile + " " + wavfile
     if os.path.exists(rawfile):
         os.system(cmd)
         os.remove(rawfile)
 
 
-def downSampleWidth(high_sample_width_file, low_sample_width_file): 
+def downSampleWidth(high_sample_width_file, low_sample_width_file):
     """
     from 32bit(float)wave file to 16bit integer wavefile
     only for 32bit float form to 16bit integer form
     """
-    
-    cmd = "sox "+high_sample_width_file+" -b 16 "+low_sample_width_file
+
+    cmd = "sox " + high_sample_width_file + " -b 16 " + low_sample_width_file
     if os.path.exists(high_sample_width_file):
         os.system(cmd)
 
@@ -198,10 +212,9 @@ def inputAsPath(path_str):
     if path[-1] is not '/':
         path.extend('/')
     path_str = ''.join(path)
-    return path_str 
+    return path_str
 
-
-#==============================================================================
+# ==============================================================================
 #
 # def main():
 #     a = AudioPreProcesser(wav_audio_path="../__audiodata/", raw_audio_path="../rawA")
@@ -211,4 +224,4 @@ def inputAsPath(path_str):
 #
 # if __name__ == "__main__":
 #     main()
-#==============================================================================
+# ==============================================================================

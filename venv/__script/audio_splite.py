@@ -20,13 +20,13 @@ class AudioFileCutter:
         self.__splited_audio_path__ = splited_audio_path
         self.__audio_info__ = []
         self.__min_silence__ = None
-        self.__audio_block_list__ = sorted(glob.glob(self.__presplit_path__ + "*"))
+        self.__audio_block_list__ = sorted(glob.glob(self.__presplit_path__ + "*.wav"))
         buildDirectoryAnyway(self.__splited_audio_path__)
         self.audioInfoDetect()
 
     def setMinSil(self, silence_len):
         if silence_len < 200 or silence_len > 5000:
-            print(silence_len + "ms is not a proper length of a silence to split audio", file=sys.stderr)
+            print(silence_len + "ms is not a proper length of the silence to split audio", file=sys.stderr)
         else:
             self.__min_silence__ = silence_len
 
@@ -60,7 +60,7 @@ def typeCheck(file_path):
         type_info.append(path_info)
         type_info.append(file_type)
         return type_info
-    if kind.MIME == "audio/x-wav":         # Type of file is wav
+    if kind.MIME == "audio/x-wav":         # .wav
         file_type = "wav"
         valid_flag = True
         type_info.append(valid_flag)
@@ -104,6 +104,7 @@ def buildDirectoryAnyway(folder_path):
 if __name__ == "__main__":
     presplit_path = "../__prepAudiodata/"
     splited_audio_path = "../__audiodata/"
+
     a = AudioFileCutter(presplit_path, splited_audio_path)
     a.setMinSil(2000)
     a.audioSplit()
