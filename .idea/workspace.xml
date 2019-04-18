@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f408d18-4b5f-40d4-9c49-f71991bff149" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/01.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/02.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/03.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/04.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/05.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/06.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/07.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/08.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/10.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__audiodata/9.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/__script/audio_splite.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/audio_splite.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,20 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/__script/audio_splite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="112" selection-start-line="112" selection-end-line="112" />
+            <state relative-caret-position="104">
+              <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/__script/audioPreProcessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
-              <caret line="139" column="59" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="59" />
+            <state relative-caret-position="-722">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -49,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/__script/example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+            <state relative-caret-position="373">
+              <caret line="79" column="27" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="27" />
               <folding>
                 <element signature="e#108#121#0" expanded="true" />
               </folding>
@@ -61,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/__script/htsvoice_output.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            <state relative-caret-position="78">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -85,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/__script/textPreProcessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1305">
-              <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+            <state relative-caret-position="178">
+              <caret line="77" column="26" lean-forward="true" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -127,6 +114,7 @@
       <find>audioFormatCheck</find>
       <find>main</find>
       <find>splite</find>
+      <find>wavfileProcessing</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,8 +129,8 @@
         <option value="$PROJECT_DIR$/venv/__script/textPreProcessing.py" />
         <option value="$PROJECT_DIR$/venv/__script/example.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" />
         <option value="$PROJECT_DIR$/venv/__script/audio_splite.py" />
+        <option value="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" />
       </list>
     </option>
   </component>
@@ -178,6 +166,12 @@
               <item name="audio-text-preprocessing-for-openjtalk" type="462c0819:PsiDirectoryNode" />
               <item name="venv" type="462c0819:PsiDirectoryNode" />
               <item name="__preaudio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="audio-text-preprocessing-for-openjtalk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="audio-text-preprocessing-for-openjtalk" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="__script" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -357,7 +351,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294509" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294509" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2046589" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2046589" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3294509" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -404,40 +398,6 @@
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/audio_splite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/audioPreProcessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
-          <caret line="139" column="59" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
-          <folding>
-            <element signature="e#108#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/__script/htsvoice_output.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -448,10 +408,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/__script/audio_splite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/__script/htsvoice_output.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/__script/textPreProcessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+        <state relative-caret-position="178">
+          <caret line="77" column="26" lean-forward="true" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/__script/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="79" column="27" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="27" />
+          <folding>
+            <element signature="e#108#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/__script/audioPreProcessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-722">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
         </state>
       </provider>
     </entry>

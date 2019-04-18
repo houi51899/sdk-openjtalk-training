@@ -41,7 +41,7 @@ class AudioPreProcesser:
         for i in self.__wav_audio_record:
             print(i, file=sys.stderr)
 
-    def wavToRaw(self):
+    def wavfileProcessing(self):
 
         # print(self.__wav_audio_record, file=sys.stderr)
         unsupport_counter = 0
