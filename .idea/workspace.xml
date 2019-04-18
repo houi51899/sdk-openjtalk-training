@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f408d18-4b5f-40d4-9c49-f71991bff149" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/__script/audioPreProcessing.py" afterDir="false" />
-    </list>
+    <list default="true" id="9f408d18-4b5f-40d4-9c49-f71991bff149" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
