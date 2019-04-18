@@ -138,7 +138,6 @@ def audioFormatCheck(wavfile):
     false : non-standard form
     """
     channel, frame_rate, sample_width = extractAudioFeature(wavfile)
-    # print(channel,frame_rate,sample_width, file=sys.stderr)
 
     if channel != 1:
         return False
@@ -176,7 +175,6 @@ def downFrequency(high_frequency_file, low_frequency_file):
     downsampling from 96000 to 48000 so it's 2:1 ->21
 
     """
-    ## check faudio frequency ?
     cmd = " ds -s 21 " + high_frequency_file + " > " + low_frequency_file
     if os.path.exists(high_frequency_file):
         os.system(cmd)

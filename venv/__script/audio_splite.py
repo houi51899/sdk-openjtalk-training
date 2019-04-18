@@ -3,7 +3,13 @@
 """
 Created on Mon Mar 18 12:55:36 2019
 
-@author: zaizen
+In splitting, module "Pydub" converts wavfile by default(test in 48kHz sample rate).
+16bit signed integer -----> 16bit signed integer
+24bit signed integer -----> 32bit signed integer
+32bit signed integer -----> 32bit signed integer
+32bit float          -----> 32bit signed integer
+
+
 """
 from pydub import AudioSegment
 import filetype
@@ -47,7 +53,8 @@ class AudioFileCutter:
 
 
 def typeCheck(file_path):
-    # wavfile(96kHz,24bit) is not supported by basic module wave. hard to get attributes like frequency or sample width
+    # wavfile(96kHz,24bit) is not supported by module "wave". it's hard to get attributes like sample rate or bit-depth
+    # so module "filetype" used instead.
     type_info = []
     valid_flag = False
     path_info = file_path
@@ -74,6 +81,13 @@ def typeCheck(file_path):
 
 
 def splitAndOrder(audio_block, splited_audio_path, min_silence, audio_order):
+    """
+    :param audio_block: the wavfile to be split
+    :param splited_audio_path: directory stores post-split wavfile.
+    :param min_silence:
+    :param audio_order: order to appear on the filename
+    :return: return the order of next file
+    """
     name = audio_block.split("/")[-1].split(".")[0]
     print(name, file=sys.stderr)
     sound = AudioSegment.from_file(audio_block, format="wav")
@@ -86,24 +100,23 @@ def splitAndOrder(audio_block, splited_audio_path, min_silence, audio_order):
     return audio_order
 
 
-def buildDirectoryAnyway(folder_path):
+def buildDirectoryAnyway(directory_path):
     """
-    Build A New Folder.
-    If The Path Exists, Overwrite ALL In The Old Directory .
+    New a target directory.
+    If the directory exists, delete it and make a new one .
     """
     try:
-        os.mkdir(folder_path)
-
+        os.mkdir(directory_path)
     except FileExistsError as fe:
-        shutil.rmtree(folder_path)
-        os.mkdir(folder_path)
+        shutil.rmtree(directory_path)
+        os.mkdir(directory_path)
 
 
 if __name__ == "__main__":
-    presplit_path = "../__prepAudiodata/"
+    presplit_path = "../__preaudio/"
     splited_audio_path = "../__audiodata/"
 
     a = AudioFileCutter(presplit_path, splited_audio_path)
-    a.setMinSil(2000)
+    a.setMinSil(1300)
     a.audioSplit()
 

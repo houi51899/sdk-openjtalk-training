@@ -16,12 +16,12 @@ tips: Here you can split your splited wavfile once more (but in a long silence p
 ## Getting Started
 Two main parts
 
-### audio split:audio_split.py
+### audio splitting:audio_split.py
   split a block wavfile into pieces by silence in audio
   When set a long duration of silence to split audio file, this script could used to convert a unsupported wavfile 
   to a supported one, which means you can split some split-already wavfiles again to convert its format. 
 
-### audio/textPreProcessing:example.py
+### audio/text data preprocessing:example.py
   convert wavfile to proper rawfile and extract labels from sentenses in script
   
   Attention : Make sure rawfile and labels are in pair with same name.  
